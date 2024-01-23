@@ -46,8 +46,6 @@ android {
 
 dependencies {
 
-    api("androidx.core:core-ktx:1.12.0")
-    api("androidx.appcompat:appcompat:1.6.1")
     api("com.google.android.material:material:1.11.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -68,6 +66,8 @@ afterEvaluate {
 
                 afterEvaluate {
                     from(components["release"])
+
+                    artifact("$buildDir/outputs/aar/crashPilot-1.1.aar")
                 }
             }
         }
