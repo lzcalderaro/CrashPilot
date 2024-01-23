@@ -39,6 +39,7 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
 }
@@ -62,7 +63,7 @@ publishing {
         create<MavenPublication>("aar") {
             groupId = "com.github.lzcalderaro"
             artifactId = "crashPilot"
-            version = "0.0.2"
+            version = "0.0.1"
         }
     }
 }
@@ -73,7 +74,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.github.lzcalderaro"
                 artifactId = "crashPilot"
-                version = "0.0.2"
+                version = "0.0.1"
 
                 afterEvaluate {
                     from(components["release"])
