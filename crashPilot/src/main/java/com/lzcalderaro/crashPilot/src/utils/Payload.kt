@@ -50,7 +50,6 @@ object Payload {
 
     fun getDevice(): Device {
         return Device(
-            serial = Build.SERIAL,
             model = Build.MODEL,
             id = Build.ID,
             manufacturer = Build.MANUFACTURER,
@@ -59,7 +58,6 @@ object Payload {
             user = Build.USER,
             baseVersion = Build.VERSION_CODES.BASE,
             incrementalVersion = Build.VERSION.INCREMENTAL,
-            sdk = Build.VERSION.SDK,
             board = Build.BOARD,
             host = Build.HOST,
             releaseVersion = Build.VERSION.RELEASE
