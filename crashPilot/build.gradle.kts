@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -30,6 +31,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -44,4 +52,20 @@ dependencies {
     api("com.squareup.okhttp3:okhttp:4.12.0")
     api("com.fasterxml.jackson.core:jackson-core:2.13.0")
     api("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "com.github.lzcalderaro"
+                artifactId = "crashPilot"
+                version = "0.0.1"
+
+                afterEvaluate {
+                    from(components["release"])
+                }
+            }
+        }
+    }
 }
