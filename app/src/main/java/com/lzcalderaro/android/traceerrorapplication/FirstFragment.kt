@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.lzcalderaro.android.traceerrorapplication.databinding.FragmentFirstBinding
+import com.lzcalderaro.crashPilot.src.controller.CpLog
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -24,7 +24,7 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -34,7 +34,9 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
 
-            val tamanho = str!!.length
+            CpLog.d("MEUDEBUGUE", "My Message")
+
+            //val tamanho = str!!.length
             //throw RuntimeException("This is a simulated crash for testing purposes.")
             //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
