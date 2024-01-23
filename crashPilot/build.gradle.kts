@@ -11,6 +11,10 @@ android {
     defaultConfig {
         minSdk = 26
 
+        aarMetadata {
+            minCompileSdk = 26
+        }
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -52,6 +56,16 @@ dependencies {
     api("com.squareup.okhttp3:okhttp:4.12.0")
     api("com.fasterxml.jackson.core:jackson-core:2.13.0")
     api("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("aar") {
+            groupId = "com.github.lzcalderaro"
+            artifactId = "crashPilot"
+            version = "0.0.1"
+        }
+    }
 }
 
 afterEvaluate {
