@@ -58,23 +58,13 @@ dependencies {
     api("com.fasterxml.jackson.core:jackson-databind:2.13.0")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("aar") {
-            groupId = "com.github.lzcalderaro"
-            artifactId = "crashPilot"
-            version = "0.0.1"
-        }
-    }
-}
-
 afterEvaluate {
     publishing {
         publications {
-            register<MavenPublication>("release") {
+            register<MavenPublication>("crashPilot") {
                 groupId = "com.github.lzcalderaro"
                 artifactId = "crashPilot"
-                version = "0.0.1"
+                version = "1.0"
 
                 afterEvaluate {
                     from(components["release"])
