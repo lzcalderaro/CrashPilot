@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TraceErrorApplication"
 include ':app'
-include ':CrashPilot'
+include ':crashPilot'

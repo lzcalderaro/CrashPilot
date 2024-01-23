@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lzcalderaro.android.traceerrorapplication.databinding.FragmentFirstBinding
-import com.lzcalderaro.crashPilot.src.controller.CpLog
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -34,7 +33,7 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
 
-            CpLog.d("MEUDEBUGUE", "My Message")
+            //CpLog.d("MEUDEBUGUE", "My Message")
 
             //val tamanho = str!!.length
             //throw RuntimeException("This is a simulated crash for testing purposes.")
