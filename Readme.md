@@ -1,5 +1,7 @@
 # Crash Pilot Android Library
 
+[![](https://jitci.com/gh/lzcalderaro/crashPilot/svg)](https://jitci.com/gh/lzcalderaro/crashPilot)
+
 ## Overview
 Crash Pilot is an Android library designed to streamline crash reporting and logging in your Android applications. It allows you to easily capture and manage crash reports, send logs to a specified server, and save logs to a local file.
 
