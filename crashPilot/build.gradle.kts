@@ -56,18 +56,29 @@ dependencies {
     api("com.fasterxml.jackson.core:jackson-databind:2.13.0")
 }
 
+val customAarFileName = "$buildDir/outputs/aar/crashPilot-release.aar"
+
 afterEvaluate {
     publishing {
         publications {
             register<MavenPublication>("crashPilot") {
                 groupId = "com.github.lzcalderaro"
                 artifactId = "crashPilot"
-                version = "1.0"
+                version = "1.1"
 
-                afterEvaluate {
-                    from(components["release"])
+                artifact(customAarFileName)
 
-                    artifact("$buildDir/outputs/aar/crashPilot-1.1.aar")
+                // Customize the POM file
+                pom.withXml {
+                    val dependenciesNode = asNode().appendNode("dependencies")
+                    configurations.api.allDependencies.forEach { dependency ->
+                        if (dependency.name != "unspecified") {
+                            val dependencyNode = dependenciesNode.appendNode("dependency")
+                            dependencyNode.appendNode("groupId", dependency.group)
+                            dependencyNode.appendNode("artifactId", dependency.name)
+                            dependencyNode.appendNode("version", dependency.version)
+                        }
+                    }
                 }
             }
         }
