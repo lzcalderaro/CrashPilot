@@ -36,53 +36,28 @@ dependencies {
     api("com.fasterxml.jackson.core:jackson-databind:2.13.0")
 }
 
-publishing {
-    repositories {
-        maven { url 'https://jitpack.io' }
-    }
-    publications {
-        aar(MavenPublication) {
-            groupId = "com.github.lzcalderaro"
-            artifactId = "crashPilot"
-            version = appVersionName.toString()
-        }
-    }
-}
-
 afterEvaluate {
     publishing {
-        publications {
-            aar(MavenPublication) {
-                artifact("$buildDir/outputs/aar/crashPilot-release.aar")
-                pom.withXml {
-                    def dependenciesNode = asNode().appendNode('dependencies')
-                    configurations.api.allDependencies.each { dependency ->
-                        if (dependency.name != 'unspecified') {
-                            def dependencyNode = dependenciesNode.appendNode('dependency')
-                            dependencyNode.appendNode('groupId', dependency.group)
-                            dependencyNode.appendNode('artifactId', dependency.name)
-                            dependencyNode.appendNode('version', dependency.version)
-                        }
-                    }
+
+        /*repositories {
+            maven {
+                url 'https://maven.pkg.github.com/lzcalderaro/crashPilot'
+                name 'GitHubPackages'
+                credentials {
+                    username = githubCredentialName.toString()
+                    password = githubCredentialToken.toString()
                 }
             }
-        }
-    }
-}
+        }*/
 
-/*
-afterEvaluate {
-    publishing {
         publications {
-            aar(MavenPublication) {
-                groupId = "com.github.lzcalderaro"
-                artifactId = "crashPilot"
-                version = appVersionName.toString()
 
+            release(MavenPublication) {
                 from components.release
+                groupId = "com.github.lzcalderaro"
+                artifactId = "crashpilot"
+                version = appVersionName.toString()
             }
         }
     }
 }
-*/
-
